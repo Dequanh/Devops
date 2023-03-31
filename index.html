@@ -36,7 +36,7 @@
 
                 element.addEventListener('click', () => {
                     axios
-                        .delete(`${baseUrl}/api/students/${theIndexValue}`)
+                        .delete(baseUrl`/api/students/${theIndexValue}`)
                         .then(res => {
                             putTheThingInTheView(res)
                         })
@@ -48,7 +48,7 @@
             evt.preventDefault();
 
             axios
-                .post('${baseUrl}', { name: nameInput.value })
+                .post(baseUrl, { name: nameInput.value })
                 .then(res => {
                     putTheThingInTheView(res)
                 })
@@ -70,7 +70,7 @@
 
         // get student list on initial load
         axios
-            .get('${baseUrl}')
+            .get(baseUrl)
             .then(res => {
                 putTheThingInTheView(res)
             })
