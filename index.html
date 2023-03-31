@@ -21,6 +21,7 @@
         const addForm = document.querySelector('form');
         const nameInput = document.querySelector('input');
         const container = document.querySelector('section');
+        const baseUrl = 'http://ec2-44-212-2-213.compute-1.amazonaws.com' || 'http://localhost:5050';
 
         function putTheThingInTheView(res) {
             container.innerHTML = ''
@@ -35,7 +36,7 @@
 
                 element.addEventListener('click', () => {
                     axios
-                        .delete(`http://localhost:5050/api/students/${theIndexValue}`)
+                        .delete(`${baseUrl}/api/students/${theIndexValue}`)
                         .then(res => {
                             putTheThingInTheView(res)
                         })
@@ -47,7 +48,7 @@
             evt.preventDefault();
 
             axios
-                .post('http://localhost:5050/api/students', { name: nameInput.value })
+                .post('${baseUrl}', { name: nameInput.value })
                 .then(res => {
                     putTheThingInTheView(res)
                 })
@@ -69,7 +70,7 @@
 
         // get student list on initial load
         axios
-            .get('http://localhost:5050/api/students')
+            .get('${baseUrl}')
             .then(res => {
                 putTheThingInTheView(res)
             })
